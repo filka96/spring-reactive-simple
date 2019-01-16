@@ -1,4 +1,4 @@
-package com.example.reactive.web.rest;
+package com.example.reactive.web.rest.util;
 
 import lombok.experimental.UtilityClass;
 import org.springframework.http.HttpStatus;

@@ -2,6 +2,7 @@ package com.example.reactive.web.rest;
 
 import com.example.reactive.domain.User;
 import com.example.reactive.service.UserService;
+import com.example.reactive.web.rest.util.ResponseUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
