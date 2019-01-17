@@ -31,8 +31,8 @@ public class UserController {
      *
      * @return the ResponseEntity with status 200 (OK) and the list of users in body
      */
-    @GetMapping(value = "/users", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public Flux<User> all() {
+    @GetMapping(value = {"/v1/users", "/v2/users"}, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Flux<User> getAllUsers() {
         log.debug("REST request to get all Users");
         return service.findAll();
     }
@@ -43,7 +43,7 @@ public class UserController {
      * @param user the user to create
      * @return the ResponseEntity with status 201 (Created) and with body the new user, or with status 400 (Bad Request) if the user has already an ID
      */
-    @PostMapping(value = "/users", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @PostMapping(value = {"/v1/users", "/v2/users"}, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Mono<ResponseEntity<User>> createUser(
             @Valid @RequestBody User user) {
         log.debug("REST request to save User : {}", user);
@@ -56,8 +56,8 @@ public class UserController {
      * @param id the id of the user to retrieve
      * @return the ResponseEntity with status 200 (OK) and with body the user, or with status 404 (Not Found)
      */
-    @GetMapping(value = "/users/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public Mono<ResponseEntity<User>> get(
+    @GetMapping(value = {"/v2/users/{id}"}, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Mono<ResponseEntity<User>> getUser(
             @PathVariable Long id) {
         log.debug("REST request to get User : {}", id);
         return service.findOne(id)
@@ -73,7 +73,7 @@ public class UserController {
      * or with status 400 (Bad Request) if the user is not valid,
      * or with status 500 (Internal Server Error) if the user couldn't be updated
      */
-    @PutMapping(value = "/users/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @PutMapping(value = {"/v2/users/{id}"}, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Mono<ResponseEntity<User>> updateUser(
             @PathVariable(value = "id") Long id,
             @RequestBody User user) {
@@ -90,7 +90,7 @@ public class UserController {
      * @param id the id of the user to delete
      * @return the ResponseEntity with status 200 (OK)
      */
-    @DeleteMapping(value = "/users/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @DeleteMapping(value = {"/v2/users/{id}"}, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Mono<ResponseEntity<Void>> deleteUser(
             @PathVariable Long id) {
         log.debug("REST request to delete User : {}", id);
