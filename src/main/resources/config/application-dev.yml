@@ -14,7 +14,7 @@
 # CORE PROPERTIES
 # ----------------------------------------
 debug: true # Enable debug logs.
-trace: false # Enable trace logs.
+trace: true # Enable trace logs.
 
 # LOGGING
 logging:
