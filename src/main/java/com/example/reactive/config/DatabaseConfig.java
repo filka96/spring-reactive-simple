@@ -3,6 +3,7 @@ package com.example.reactive.config;
 import io.r2dbc.postgresql.PostgresqlConnectionConfiguration;
 import io.r2dbc.postgresql.PostgresqlConnectionFactory;
 import io.r2dbc.spi.ConnectionFactory;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.r2dbc.config.AbstractR2dbcConfiguration;
@@ -14,21 +15,24 @@ import org.springframework.data.r2dbc.repository.support.R2dbcRepositoryFactory;
 import org.springframework.data.relational.core.mapping.RelationalMappingContext;
 
 @Configuration
+@RequiredArgsConstructor
 @EnableR2dbcRepositories(
         basePackages = {"com.example.reactive.repository"}
 )
 public class DatabaseConfig extends AbstractR2dbcConfiguration {
+
+    private final DbProps db;
 
     @Override
     @Bean
     public ConnectionFactory connectionFactory() {
         return new PostgresqlConnectionFactory(
                 PostgresqlConnectionConfiguration.builder()
-                        .host("localhost")
-                        .port(5432)
-                        .database("reactive")
-                        .username("reactive")
-                        .password("reactive")
+                        .host(db.getHost())
+                        .port(db.getPort())
+                        .database(db.getName())
+                        .username(db.getUser())
+                        .password(db.getPass())
                         .build()
         );
     }

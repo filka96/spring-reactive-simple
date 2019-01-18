@@ -11,21 +11,6 @@
 # ===================================================================
 
 # ----------------------------------------
-# CORE PROPERTIES
-# ----------------------------------------
-debug: true # Enable debug logs.
-trace: true # Enable trace logs.
-
-# LOGGING
-logging:
-  level:
-    ROOT: DEBUG
-
-# REACTOR
-spring.reactor:
-  stacktrace-mode.enabled: true # Whether Reactor should collect stacktrace information at runtime.
-
-# ----------------------------------------
 # DATA PROPERTIES
 # ----------------------------------------
 db:

@@ -18,8 +18,26 @@
 # PROFILES
 spring.profiles:
   active: # Comma-separated list of active profiles. Can be overridden by a command line switch.
-    - dev
+#    - dev
+    - prod
   include: # Unconditionally activate the specified comma-separated list of profiles (or list of profiles if using YAML).
+
+# ----------------------------------------
+# DATA PROPERTIES
+# ----------------------------------------
+
+# DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
+spring.datasource:
+  driver-class-name: org.postgresql.Driver # Fully qualified name of the JDBC driver. Auto-detected based on the URL by default.
+  url: jdbc:postgresql://${db.host}:${db.port}/${db.name} # JDBC URL of the name.
+  username: ${db.user} # Login user of the name.
+  password: ${db.pass} # Login pass of the name.
+
+# FLYWAY
+spring.flyway:
+  enabled: true # Whether to enable flyway.
+  locations: # Locations of migrations scripts. Can contain the special "{vendor}" placeholder to use vendor-specific locations.
+    - classpath:db/migration
 
 # ===================================================================
 # Application specific properties
