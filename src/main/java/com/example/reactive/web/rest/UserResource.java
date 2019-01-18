@@ -22,7 +22,7 @@ import javax.validation.Valid;
 @Slf4j
 @RequiredArgsConstructor
 @RequestMapping("/api")
-public class UserController {
+public class UserResource {
 
     private final UserService service;
 
