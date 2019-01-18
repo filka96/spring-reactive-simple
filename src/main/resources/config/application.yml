@@ -19,12 +19,17 @@
 spring.profiles:
   active: # Comma-separated list of active profiles. Can be overridden by a command line switch.
 #    - dev
-    - prod
   include: # Unconditionally activate the specified comma-separated list of profiles (or list of profiles if using YAML).
 
 # ----------------------------------------
 # DATA PROPERTIES
 # ----------------------------------------
+db:
+  host: ${DB_SERVER_HOST:127.0.0.1}
+  port: ${DB_SERVER_PORT:5432}
+  name: ${DB_NAME:reactive}
+  user: ${DB_USER:reactive}
+  pass: ${DB_PASSWORD:reactive}
 
 # DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
 spring.datasource:

@@ -25,16 +25,6 @@ logging:
 spring.reactor:
   stacktrace-mode.enabled: true # Whether Reactor should collect stacktrace information at runtime.
 
-# ----------------------------------------
-# DATA PROPERTIES
-# ----------------------------------------
-db:
-  host: ${DB_SERVER_HOST:127.0.0.1}
-  port: ${DB_SERVER_PORT:5432}
-  name: ${DB_NAME:reactive}
-  user: ${DB_USER:reactive}
-  pass: ${DB_PASSWORD:reactive}
-
 # ===================================================================
 # Application specific properties
 # ===================================================================
