@@ -79,8 +79,7 @@ public class UserResource {
             @RequestBody User user) {
         log.debug("REST request to update User : {}", user);
         return service.findOne(id)
-                .flatMap(service::save)
-                .map(ResponseEntity::ok)
+                .flatMap(e -> service.save(e).map(ResponseEntity::ok))
                 .defaultIfEmpty(ResponseUtil.notFound());
     }
 
@@ -95,8 +94,7 @@ public class UserResource {
             @PathVariable Long id) {
         log.debug("REST request to delete User : {}", id);
         return service.findOne(id)
-                .flatMap(service::delete)
-                .map(ResponseEntity::ok)
+                .flatMap(e -> service.delete(e).map(ResponseEntity::ok))
                 .defaultIfEmpty(ResponseUtil.notFound());
     }
 
